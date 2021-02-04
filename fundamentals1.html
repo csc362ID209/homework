@@ -1,0 +1,46 @@
+<!--
+This file draws a range of green outlined circles based on factorials.
+Author: anon
+Date: February 2, 2021
+Time spent: 1 hour
+Collaborators: n/a
+Feedback: n/a
+-->
+
+<body>
+  <svg = id="chart" width="600" height="300"></svg>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script>
+    var num = 24
+    const factors = myFunction(num);
+
+    //factorial function 
+    function myFunction(num) {
+      //creating empty array
+      const arr = [];
+      //going through all numbers < num
+      //only adding those that meet modulus requirement
+      for (var i = 1; i <= num; i++){
+        if (num % i == 0) {
+          arr.push(i)
+        }
+      }
+      return arr;
+    }
+
+    d3.select("#chart")
+      .selectAll("circle")
+      .data(factors)
+      .enter()
+      .append("circle")
+        //setting radius in proportion to arr[i]
+        .attr("r", d => d)
+        .attr("cy", 100)
+        //setting cx location to arr[i]*10
+        .attr("cx", d => d * 10)
+        //styling my green circles with black outline
+        .style("fill", "darkseagreen")
+        .style("stroke", "black")
+
+  </script>
+</body>

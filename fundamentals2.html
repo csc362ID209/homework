@@ -1,0 +1,44 @@
+<!--
+This file draws a range of red outlined circles, and includes an
+animated transition that redraws the circles in smallest to largest
+size order.
+Author: anon
+Date: February 2, 2021
+Time spent: 1/2 hour
+Collaborators: n/a
+Feedback: n/a
+-->
+
+<body>
+  <svg = id="chart" width="1000" height="300"></svg>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script>
+    const array = [92, 56, 14, 73, 22, 38, 93, 45, 55]
+
+    d3.select("#chart")
+      .selectAll("circle")
+      .data(array)
+      .enter()
+      .append("circle")
+      //Setting radius to be array[i]/2
+        .attr("r", d => d/2)
+        .attr("cy", 100)
+        .attr("cx", function(d, x) { return 100*x + 50; })
+        .style("fill", "darkseagreen")
+        .style("stroke", "black")
+    setTimeout(function() {
+      d3.select("#chart").selectAll("circle")
+      //Sort array in ascending order
+      .data(array.sort((a, b) => a - b))
+      //1.5 second transition
+      .transition().duration(1500)
+      .attr("r", d => d/2)
+      .attr("cy", 100)
+      //Increments each circle cx val by 100 and shiifts right by 50
+      .attr("cx", function(d, x) { return 100*x + 50; })
+      .style("fill", "darkseagreen")
+      .style("stroke", "black")
+      //After 2 sec, circles will be in new order
+    }, 2000)
+  </script>
+</body>
