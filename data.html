@@ -1,0 +1,100 @@
+<!--
+This file makes an informative website about data types.
+Author: anon
+Date: February 9, 2021
+Time spent: 2 hours
+Collaborators: n/a
+Feedback: n/a
+-->
+<body>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <!-- Set up basic webpage structure -->
+
+  <div id="header"></div>
+  <div id="nominal"></div>
+  <div id="ordinal"></div>
+  <div id="interval"></div>
+  <div id="ratio"></div>
+
+  <style>
+    .red {
+        color: white;
+        background-color: #e41a1c;
+    }
+    .green {
+        color: #4daf4a;
+    }
+    .blue {
+        color: white;
+        background-color: #377eb8;
+    }
+    .purple {
+        color: #984ea3;
+    }
+  </style>
+
+  <script>
+    //Selecting divs.
+    const divHeader = d3.select("#header");
+    const divN = d3.select("#nominal");
+    const divO = d3.select("#ordinal");
+    const divI = d3.select("#interval");
+    const divR = d3.select("#ratio");
+
+    //Setting the style  for each div.
+    divN.style('border', 'solid black 3px');
+    divN.style('background-color', 'plum')
+    divN.style('font-family', 'fantasy')
+
+    divO.style('border', 'solid black 3px');
+    divO.style('background-color', 'honeydew')
+    divO.style('font-family', 'sans-serif')
+
+    divI.style('border', 'solid black 3px');
+    divI.style('background-color', 'seagreen')
+    divI.style('font-family', 'cursive')
+
+    divR.style('border', 'solid black 3px');
+    divR.style('background-color', 'lemonchiffon')
+    divR.style('font-family', 'times')
+
+    //Adding main header for website.
+    d3.select('div')
+      .insert("h1", '*')
+      .text("Data Types");
+
+    //Nominal header.
+    d3.select('#nominal')
+      .insert("h1", '*')
+      .text("Nominal");
+      //Nominal paragraph.
+      d3.select('#nominal')
+        .append("p")
+        .text("Categorical data that is refers to names rather than numerical relationships. One example of nominal data could be a group of people's favorite deserts.");
+
+    d3.select('#ordinal')
+      .insert("h1", '*')
+      .text("Ordinal");
+
+      d3.select('#ordinal')
+        .append("p")
+        .text("Ordered data in which the gap between each interval is unkown, but the ranked relationship is clear. An example of ordinal data could include military rank.");
+
+    d3.select('#interval')
+      .insert("h1", '*')
+      .text("Interval");
+
+      d3.select('#interval')
+        .append("p")
+        .text("Numerically scaled data for which we know the interval between each point, without a true zero. An example of interval data could be the temperature outside (fahrenheit).");
+
+    d3.select('#ratio')
+      .insert("h1", '*')
+      .text("Ratio");
+
+      d3.select('#ratio')
+        .append("p")
+        .text("Data with an exact ratio and true zero. Measures of weight are a  good example of this data type.");
+  </script>
+</body>
